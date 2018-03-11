@@ -4,7 +4,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { EntrarTurmaPage } from '../pages/turma/entrar/entrar';
+import { AdicionarTurmaPage } from '../pages/turma/adicionar/adicionar';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +24,9 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'Entrar em uma turma', component: EntrarTurmaPage },
+      { title: 'Adicionar nova turma', component: AdicionarTurmaPage },
+      { title: 'Logout', component: HomePage }
     ];
 
   }
@@ -39,6 +43,9 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
+    if(page.title = 'Logou'){
+      localStorage.removeItem('currentUser');
+    }
     this.nav.setRoot(page.component);
   }
 }

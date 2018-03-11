@@ -1,33 +1,43 @@
+
+import { UserService } from './../services/user.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { AdicionarTurmaPage } from '../pages/turma/adicionar/adicionar';
+import { EntrarTurmaPage } from '../pages/turma/entrar/entrar';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    EntrarTurmaPage,
+    AdicionarTurmaPage
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     HttpClientModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    AdicionarTurmaPage,
+    EntrarTurmaPage,
   ],
   providers: [
+    UserService,
+    HttpClientModule,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

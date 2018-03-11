@@ -8,28 +8,43 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="login-box">
-    <form (ngSubmit)="login()" #registerForm="ngForm">
+  <div *ngIf="!online" class="login-box">
+    <form (ngSubmit)="login()" [formGroup]="form">
       <ion-row>
         <ion-col>
           <ion-item>
-            <ion-label floating>Username</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-label floating >Matricula</ion-label>
+            <ion-input type="text" formControlName="matricula"></ion-input>
           </ion-item>
         
           <ion-item>
-            <ion-label floating>Password</ion-label>
-            <ion-input type="password"></ion-input>
+            <ion-label floating>Senha</ion-label>
+            <ion-input type="password"  formControlName="senha"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
       
       <ion-row>
         <ion-col class="signup-col">
-          <button ion-button class="submit-btn" full type="submit" >Entrar na Aula</button>          
+          <button ion-button class="submit-btn" full type="submit" >Login</button>          
         </ion-col>
       </ion-row>
       
     </form>
   </div>
+  <div *ngIf="online">
+    <ion-list>      
+    <ion-card *ngFor="let turma of turmas">
+      
+      <ion-card-content>
+        <ion-card-title>
+          {{turma.nome}}
+          </ion-card-title>
+          <button ion-button>Avisos</button>
+          <button ion-button>Notas</button>
+          <button ion-button>Faltas</button>          
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</div>
 </ion-content>
