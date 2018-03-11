@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { EntrarTurmaPage } from '../pages/turma/entrar/entrar';
-import { AdicionarTurmaPage } from '../pages/turma/adicionar/adicionar';
+import { CriarTurmaPage } from '../pages/turma/criar/criar';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Entrar em uma turma', component: EntrarTurmaPage },
-      { title: 'Adicionar nova turma', component: AdicionarTurmaPage },
+      { title: 'Criar nova turma', component: CriarTurmaPage },
       { title: 'Logout', component: HomePage }
     ];
 
@@ -43,7 +43,7 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    if(page.title = 'Logou'){
+    if(page.title == 'Logout'){
       localStorage.removeItem('currentUser');
     }
     this.nav.setRoot(page.component);

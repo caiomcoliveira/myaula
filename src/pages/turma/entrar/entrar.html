@@ -9,6 +9,14 @@
 
 <ion-content>
   <ion-list>
-    
-  </ion-list>  
+    <ion-card *ngFor="let turma of turmas">      
+      <ion-card-content>
+        <ion-card-title class="card-title">
+          {{turma.nome}}
+          </ion-card-title>
+          <button ion-button full (click)="entrar(turma.id)">Entrar</button>             
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
 </ion-content>

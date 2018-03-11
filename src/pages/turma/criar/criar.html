@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-    <form (ngSubmit)="adicionar()" [formGroup]="form">
+    <form (ngSubmit)="criar()" [formGroup]="form">
       
         <ion-row>
           <ion-col>
@@ -26,9 +26,9 @@
         
         <ion-row>
           <ion-col class="signup-col">
-            <button ion-button class="submit-btn" full type="submit" >Adicionar Turma</button>          
+            <button ion-button class="submit-btn" full type="submit" >Criar Turma</button>          
           </ion-col>
         </ion-row>
-        {{form.value | json}}
+        
       </form>
 </ion-content>

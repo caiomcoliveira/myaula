@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-buttons start>
+    <button ion-button (click)="dismiss()">
+      Voltar
+    </button>
+  </ion-buttons>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="entrar()" [formGroup]="form">
+    <ion-row>
+      <ion-col>      
+        <ion-item>
+          <ion-label floating>Senha</ion-label>
+          <ion-input type="password"  formControlName="senha"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    
+    
+    
+    <button ion-button class="submit-btn" full type="submit" >Entrar</button>          
+    
+    
+    
+  </form>  
+</ion-content>

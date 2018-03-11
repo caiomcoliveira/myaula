@@ -14,7 +14,11 @@ class AlunoList(APIView):
         serializer = AlunoSerializer(alunos, many=True)
         return Response(serializer.data)
     def post(self, request):
-        pass
+        serializer = AlunoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(senha=request.data["senha"])
+            return Response(serializer.data, status=status.HTTP_201_CREATED)        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class AlunoByMatricula(APIView):
     def get(self, request, matricula):
@@ -31,6 +35,25 @@ class TurmaList(APIView):
     def post(self, request):
         serializer = TurmaSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(senha=request.data["senha"])
             return Response(serializer.data, status=status.HTTP_201_CREATED)        
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class TurmaListFilter(APIView):
+    def get(self, request, nome):
+        turmas = Turma.objects.filter(nome=nome)
+        serializer = TurmaSerializer(turmas, many=True)
+        return Response(serializer.data)
+
+class AdicionarTurma(APIView):
+    def get(self, request):
+        pass
+    def post(self, request):                     
+        turma = Turma.objects.get(id=request.data["turma"])
+        aluno = Aluno.objects.get(matricula=request.data["matricula"]) 
+        print(turma, aluno, "TURMA:" + turma.senha, "ENVIADO: " + request.data["senha"])       
+        if(turma.senha == request.data["senha"]):
+            aluno.turmas.add(turma)
+            return Response(request.data, status=status.HTTP_200_OK)
+        return Response({}, status=status.HTTP_400_BAD_REQUEST)
+        

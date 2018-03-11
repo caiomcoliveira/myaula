@@ -1,23 +1,23 @@
+import { Repository } from './../../../repository/repository';
 import { Turma } from './../../../models/turma';
-import { HttpClient } from '@angular/common/http';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Api } from '../../../api/routes';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
-import { HttpHeaders } from '@angular/common/http';
+
 
 
 
 
 @Component({
-  selector: 'adicionar-turma',
-  templateUrl: 'adicionar.html'
+  selector: 'criar-turma',
+  templateUrl: 'criar.html'
 })
-export class AdicionarTurmaPage {
+export class CriarTurmaPage {
 
   public form: FormGroup;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient,
+  constructor(public navCtrl: NavController, public navParams: NavParams, private repositorio: Repository,
     public toastCtrl: ToastController
   ) {
     this.form = new FormBuilder().group({
@@ -29,24 +29,14 @@ export class AdicionarTurmaPage {
 
    
   }
-  private httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',    
-      'X-CSRFToken': this.getCookie('csrftoken')
-    })
-  };
-  getCookie(name) {
-    let value = "; " + document.cookie;
-    let parts = value.split("; " + name + "=");
-    if (parts.length == 2) 
-      return parts.pop().split(";").shift();
-  }
 
-  adicionar(){
-    this.http.post<any>(Api.turmas,this.form.value, this.httpOptions).subscribe(
+
+
+  criar(){
+    this.repositorio.post<Turma>(Api.turmas,this.form.value).subscribe(
       (turma)=>{
         let toast = this.toastCtrl.create({
-          message: "Turma adicionada com sucesso",
+          message: "Turma criada com sucesso",
           duration: 3000
         });
         toast.present();

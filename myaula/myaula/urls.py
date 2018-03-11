@@ -20,9 +20,11 @@ from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/adicionar/', views.AdicionarTurma.as_view()),
     path('api/alunos/', views.AlunoList.as_view()),
     path('api/aluno/<slug:matricula>/', views.AlunoByMatricula.as_view()),
     path('api/turmas/', views.TurmaList.as_view()),
+    path('api/turmas/nome=<slug:nome>/', views.TurmaListFilter.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
