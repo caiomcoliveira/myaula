@@ -1,5 +1,6 @@
 export class User {
-    matricula: string;
+    id: number;
+    email: string;
     senha: string;
 }
 

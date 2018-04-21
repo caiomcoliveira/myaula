@@ -1,3 +1,4 @@
+import { CadastroPage } from './../cadastro/cadastro';
 
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './../../services/user.service';
@@ -19,12 +20,12 @@ export class HomePage {
   public turmas: Turma[] = [];
   constructor(public navCtrl: NavController, public userService: UserService, private http: HttpClient) {
     this.form = new FormBuilder().group({
-      matricula: [[],Validators.required],
+      email: [[],Validators.required],
       senha: [[],Validators.required]
     });
-    this.online = UserService.isAuthenticated();
-    if(this.online)
-      this.carregarTurmas();
+    // this.online = UserService.isAuthenticated();
+    // if(this.online)
+    //   this.carregarTurmas();
   }
 
   login(){
@@ -34,10 +35,14 @@ export class HomePage {
   }
 
   carregarTurmas(){
-    let matricula = UserService.getCurrentUser().matricula;
-    this.http.get<Aluno>(Api.alunoPorMatricula(matricula)).subscribe(
+    let email = UserService.getCurrentUser().email;
+    this.http.get<Aluno>(Api.alunoPorMatricula(email)).subscribe(
       (aluno) => { this.turmas = aluno.turmas},
       (error) => { console.log('deu errado')}
     );
+  }
+
+  cadastrar(){
+    this.navCtrl.push(CadastroPage);
   }
 }

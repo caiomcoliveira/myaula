@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Agora Sei</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+    
+      <ion-card-header>
+        Cadastro
+      </ion-card-header>
+        
+    <ion-card-content>          
+          
+    <div>
+      <form [formGroup]="form">
+        <ion-row>
+          <ion-col>
+            <ion-item>                  
+              <ion-input placeholder="Nome" type="text" formControlName="nome"></ion-input>
+            </ion-item>
+            <ion-item>              
+              <ion-input placeholder="Email" type="text" formControlName="email"></ion-input>
+            </ion-item>
+          
+            <ion-item>              
+              <ion-input placeholder="Senha" type="password"  formControlName="senha"></ion-input>
+            </ion-item>
+            <ion-item>              
+              <ion-input placeholder="Confirmar Senha" type="password"  formControlName="confirmarSenha"></ion-input>
+            </ion-item>
+            <ion-item> 
+                
+                <ion-label>Perfil</ion-label>
+                <ion-select formControlName="tipo">
+                  <ion-option value="aluno">Aluno</ion-option>
+                  <ion-option value="professor">Professor</ion-option>
+                </ion-select>
+            </ion-item> 
+              
+          </ion-col>
+          
+          
+        </ion-row>
+        
+        <ion-row>
+          <ion-col class="signup-col">
+            <button ion-button class="submit-btn" full type="submit" >Cadastrar</button>          
+          </ion-col>
+        </ion-row>
+
+        
+      </form>
+    </div>
+</ion-card-content>
+</ion-card> 
+</ion-content>

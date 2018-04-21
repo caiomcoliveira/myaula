@@ -3,36 +3,48 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>My Aula</ion-title>
+    <ion-title>Agora Sei</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="!online" class="login-box">
-    <form (ngSubmit)="login()" [formGroup]="form">
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label floating >Matricula</ion-label>
-            <ion-input type="text" formControlName="matricula"></ion-input>
-          </ion-item>
+    <ion-card>
+    
+      <ion-card-header>
+        Login
+      </ion-card-header>
         
-          <ion-item>
-            <ion-label floating>Senha</ion-label>
-            <ion-input type="password"  formControlName="senha"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      
-      <ion-row>
-        <ion-col class="signup-col">
-          <button ion-button class="submit-btn" full type="submit" >Login</button>          
-        </ion-col>
-      </ion-row>
-      
-    </form>
-  </div>
-  <div *ngIf="online">
+    <ion-card-content>          
+          
+    <div *ngIf="!online" class="login-box">
+      <form (ngSubmit)="login()" [formGroup]="form">
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              
+              <ion-input placeholder="Email" type="text" formControlName="email"></ion-input>
+            </ion-item>
+          
+            <ion-item>
+              
+              <ion-input placeholder="Senha" type="password"  formControlName="senha"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        
+        <ion-row>
+          <ion-col class="signup-col">
+            <button ion-button class="submit-btn" full type="submit" >Entrar</button>          
+          </ion-col>
+        </ion-row>
+        <a href="#"> Esqueceu a senha?</a><br/>
+        <a href="#" (click)="cadastrar()">Não tem cadastro?</a>
+        
+      </form>
+    </div>
+</ion-card-content>
+</ion-card>
+  <!-- <div *ngIf="online">
     <ion-list>      
     <ion-card *ngFor="let turma of turmas">
       
@@ -46,5 +58,5 @@
       </ion-card-content>
     </ion-card>
   </ion-list>
-</div>
+</div> -->
 </ion-content>

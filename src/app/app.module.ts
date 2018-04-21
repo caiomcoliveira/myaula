@@ -1,3 +1,4 @@
+import { CadastroPage } from './../pages/cadastro/cadastro';
 import { Repository } from './../repository/repository';
 
 import { UserService } from './../services/user.service';
@@ -21,6 +22,7 @@ import { EntrarTurmaModalPage } from '../pages/turma/entrar/modal/entrar-modal';
   declarations: [
     MyApp,
     HomePage,
+    CadastroPage,
     EntrarTurmaPage,
     EntrarTurmaModalPage,
     CriarTurmaPage,
@@ -35,6 +37,7 @@ import { EntrarTurmaModalPage } from '../pages/turma/entrar/modal/entrar-modal';
   entryComponents: [
     MyApp,
     HomePage,
+    CadastroPage,
     CriarTurmaPage,
     EntrarTurmaPage,
     EntrarTurmaModalPage,    
