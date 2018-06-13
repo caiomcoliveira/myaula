@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button
+                menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{turma.nome}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-content>
+            <button *ngIf="tipo=='professor'" ion-button color="secondary" (click)="navegarParaAdicionarQuestionarios()"
+                full>Adicionar Questionário</button>
+            <button ion-button (click)="navegarParaQuestionarios()"
+                    full>Questionários</button>
+            <button ion-button (click)="navegarParaForum()"
+                    full>Fórum</button>
+            <button ion-button
+                    color="danger" (click)="removerTurma()"
+                    full>Remover Turma</button>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

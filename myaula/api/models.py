@@ -5,15 +5,19 @@ from django.db import models
 class Turma(models.Model):
     nome = models.CharField(max_length=200)
     senha = models.CharField(max_length=12)
+    turma = models.CharField(max_length=5)
+    professor = models.CharField(max_length=100)
+    
     def __str__(self):
         return self.nome
 
-class Aluno(models.Model):
+class Usuario(models.Model):
     nome =  models.CharField(max_length=200)
     matricula =  models.CharField(max_length=12)
     email = models.CharField(max_length=100)
     senha = models.CharField(max_length=12)
-    turmas = models.ManyToManyField(Turma)
+    tipo = models.CharField(max_length=12)
+    turmas = models.ManyToManyField(Turma, blank=True, default = [])
 
     def __str__(self):
         return self.nome

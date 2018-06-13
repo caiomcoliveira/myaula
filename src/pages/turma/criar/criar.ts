@@ -23,6 +23,8 @@ export class CriarTurmaPage {
     this.form = new FormBuilder().group({
       id: [null],
       nome: [null,[Validators.required]],
+      professor: [null,[Validators.required]],
+      turma: [null,[Validators.required]],
       senha: [null, [Validators.required]]
     });
 
@@ -42,7 +44,7 @@ export class CriarTurmaPage {
         toast.present();
     },
       (error)=>{let toast = this.toastCtrl.create({
-        message: "Error:" + error,
+        message: "Error:" + error.message,
         duration: 3000
       });
       toast.present();

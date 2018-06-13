@@ -3,27 +3,45 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Aluno, Turma
-from .serializers import AlunoSerializer, TurmaSerializer
+from .models import Usuario, Turma
+from .serializers import TurmaSerializer, UsuarioSerializer, LoginSerializer
 # Create your views here.
 
 
-class AlunoList(APIView):
+
+class Login(APIView):
     def get(self, request):
-        alunos = Aluno.objects.all()
-        serializer = AlunoSerializer(alunos, many=True)
-        return Response(serializer.data)
+        pass
     def post(self, request):
-        serializer = AlunoSerializer(data=request.data)
+        serializer = LoginSerializer(data=request.data)
+        
+        if serializer.is_valid():   
+            usuario = Usuario.objects.get(email=request.data["email"])
+            if(usuario.senha == request.data["senha"]):
+                usuarioSerializer = UsuarioSerializer(usuario)
+                return Response(usuarioSerializer.data, status=status.HTTP_200_OK)        
+            else:
+                return Response(status=status.HTTP_401_UNAUTHORIZED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+class UsuarioCadastro(APIView):
+    def get(self, request):
+        pass
+    def post(self, request):
+        serializer = UsuarioSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(senha=request.data["senha"])
             return Response(serializer.data, status=status.HTTP_201_CREATED)        
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class AlunoByMatricula(APIView):
+
+
+class UsuarioByMatricula(APIView):
     def get(self, request, matricula):
-        aluno = Aluno.objects.get(matricula=matricula)
-        serializer = AlunoSerializer(aluno,many=False)
+        usuario = Usuario.objects.get(matricula=matricula)
+        serializer = UsuarioSerializer(usuario,many=False)
         return Response(serializer.data)
 
 class TurmaList(APIView):
@@ -50,10 +68,9 @@ class AdicionarTurma(APIView):
         pass
     def post(self, request):                     
         turma = Turma.objects.get(id=request.data["turma"])
-        aluno = Aluno.objects.get(matricula=request.data["matricula"]) 
-        print(turma, aluno, "TURMA:" + turma.senha, "ENVIADO: " + request.data["senha"])       
+        usuario = Usuario.objects.get(matricula=request.data["matricula"]) 
         if(turma.senha == request.data["senha"]):
-            aluno.turmas.add(turma)
+            usuario.turmas.add(turma)
             return Response(request.data, status=status.HTTP_200_OK)
         return Response({}, status=status.HTTP_400_BAD_REQUEST)
         

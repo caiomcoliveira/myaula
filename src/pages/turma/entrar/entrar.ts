@@ -3,8 +3,9 @@ import { Repository } from './../../../repository/repository';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Turma } from '../../../models/turma';
-import { Api } from '../../../api/routes';
+
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
+import { Api } from '../../../api/routes';
 
 @Component({
   selector: 'entrar-turma',
@@ -15,15 +16,16 @@ export class EntrarTurmaPage {
   public turmas: Turma[] =[]
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, private repositorio: Repository) {
     this.carregarTurmas();
-
-
-   
+    
   }
 
   public carregarTurmas(){
-    this.repositorio.get<Turma[]>(Api.turmas).subscribe(
+    this.repositorio.get<any[]>(Api.turmas).subscribe(
       (turmas)=> {this.turmas = turmas},
-      (error) =>{console.log(error)}
+      (error) =>{
+        this.turmas = [];  
+        console.log(error);
+      }
     )
   }
 

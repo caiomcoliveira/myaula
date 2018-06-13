@@ -23,7 +23,7 @@ export class Repository {
     }
 
     public get<T>(path: string) {
-        return this.http.get<T>(path, this.httpOptions);
+        return this.http.get<T>(path);
     }
     public post<T>(path: string, body: string) {        
         return this.http.post<T>(path, body, this.httpOptions);

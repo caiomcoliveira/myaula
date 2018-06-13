@@ -11,7 +11,7 @@
     <ion-card>
     
       <ion-card-header>
-        Home
+        {{title}}
       </ion-card-header>
         
     <ion-card-content>          
@@ -23,10 +23,6 @@
             <ion-item>
               
               <ion-input placeholder="Email" type="text" formControlName="email"></ion-input>
-            </ion-item>
-            <ion-item>
-              
-              <ion-input placeholder="Matricula" type="text" formControlName="matricula"></ion-input>
             </ion-item>
           
             <ion-item>
@@ -50,17 +46,17 @@
 </ion-card>
   <div *ngIf="online">
     <ion-list>      
+    <button ion-button color="secondary" full (click)="navegarParaEntrar()">Adicionar Turma</button>
+  
     <ion-card *ngFor="let turma of turmas">
       
-      <ion-card-content>
+      <ion-card-content (click)="navegarParaTurma(turma)">
         <ion-card-title>
           {{turma.nome}}
           </ion-card-title>
-          <button ion-button>Avisos</button>
-          <button ion-button>Notas</button>
-          <button ion-button>Faltas</button>          
+          {{turma.turma}} - {{turma.professor}}        
       </ion-card-content>
     </ion-card>
   </ion-list>
-</div>
+  </div>
 </ion-content>

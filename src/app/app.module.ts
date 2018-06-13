@@ -16,6 +16,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EntrarTurmaModalPage } from '../pages/turma/entrar/modal/entrar-modal';
+import { TurmaPage } from '../pages/turma/turma';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { EntrarTurmaModalPage } from '../pages/turma/entrar/modal/entrar-modal';
     EntrarTurmaPage,
     EntrarTurmaModalPage,
     CriarTurmaPage,
+    TurmaPage,
   ],
   imports: [
     BrowserModule,    
@@ -40,7 +42,8 @@ import { EntrarTurmaModalPage } from '../pages/turma/entrar/modal/entrar-modal';
     CadastroPage,
     CriarTurmaPage,
     EntrarTurmaPage,
-    EntrarTurmaModalPage,    
+    EntrarTurmaModalPage,
+    TurmaPage    
   ],
   providers: [
     UserService,
