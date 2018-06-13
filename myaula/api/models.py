@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 
-
 class Turma(models.Model):
     nome = models.CharField(max_length=200)
     senha = models.CharField(max_length=12)
@@ -12,6 +11,7 @@ class Turma(models.Model):
 class Aluno(models.Model):
     nome =  models.CharField(max_length=200)
     matricula =  models.CharField(max_length=12)
+    email = models.CharField(max_length=100)
     senha = models.CharField(max_length=12)
     turmas = models.ManyToManyField(Turma)
 

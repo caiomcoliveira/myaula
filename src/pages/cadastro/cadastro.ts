@@ -17,7 +17,8 @@ export class CadastroPage {
     this.form = new FormBuilder().group({
       id: [null],
       nome: [[],Validators.required],   
-      email: [[],Validators.required],      
+      email: [[],Validators.required], 
+      matricula: [[],Validators.required],   
       senha: [[],Validators.required],
       confirmarSenha: [[],Validators.required],
       tipo: [[],Validators.required]

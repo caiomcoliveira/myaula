@@ -11,7 +11,7 @@
     <ion-card>
     
       <ion-card-header>
-        Login
+        Home
       </ion-card-header>
         
     <ion-card-content>          
@@ -23,6 +23,10 @@
             <ion-item>
               
               <ion-input placeholder="Email" type="text" formControlName="email"></ion-input>
+            </ion-item>
+            <ion-item>
+              
+              <ion-input placeholder="Matricula" type="text" formControlName="matricula"></ion-input>
             </ion-item>
           
             <ion-item>
@@ -44,7 +48,7 @@
     </div>
 </ion-card-content>
 </ion-card>
-  <!-- <div *ngIf="online">
+  <div *ngIf="online">
     <ion-list>      
     <ion-card *ngFor="let turma of turmas">
       
@@ -58,5 +62,5 @@
       </ion-card-content>
     </ion-card>
   </ion-list>
-</div> -->
+</div>
 </ion-content>

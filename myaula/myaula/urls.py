@@ -20,6 +20,7 @@ from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('api/registar/', views.Registrar.as_view()),
     path('api/adicionar/', views.AdicionarTurma.as_view()),
     path('api/alunos/', views.AlunoList.as_view()),
     path('api/aluno/<slug:matricula>/', views.AlunoByMatricula.as_view()),
