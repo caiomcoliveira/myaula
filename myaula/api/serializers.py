@@ -1,12 +1,30 @@
 from rest_framework import serializers
-from .models import  Turma, Usuario
+from .models import  Turma, Usuario, Questao, Questionario
 
 
+
+
+class QuestaoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Questao
+        fields = ('id', 'enunciado', 'opcaoA', 'opcaoB', 'opcaoC', 'opcaoD', 'gabarito')
+
+class QuestionarioSerializer(serializers.ModelSerializer):
+    questoes = QuestaoSerializer(many=True, read_only=True)
+    class Meta:
+        model = Questionario
+        fields = '__all__'
+
+class LoginSerializer(serializers.Serializer):
+    email = serializers.CharField(max_length=200)
+    senha = serializers.CharField(max_length=20)
+    
 class TurmaSerializer(serializers.ModelSerializer):
+    questionarios = QuestionarioSerializer(many=True, read_only=True)
     class Meta:
         model = Turma
-        fields = ('id', 'nome', 'turma', 'professor')
-        #fields = '__all__'
+        # fields = ('id', 'nome', 'turma', 'professor', 'questionarios')
+        fields = '__all__'
 
 class UsuarioSerializer(serializers.ModelSerializer):
     turmas = TurmaSerializer(many=True)
@@ -22,8 +40,4 @@ class UsuarioSerializer(serializers.ModelSerializer):
         instance.save()
         return instance 
 
-    
-class LoginSerializer(serializers.Serializer):
-    email = serializers.CharField(max_length=200)
-    senha = serializers.CharField(max_length=20)
 

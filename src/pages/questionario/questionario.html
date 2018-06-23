@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button
+                menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Questionários</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-content>
+            <ion-list>
+                    
+                <div *ngIf="questionarios">
+                    <button ion-button *ngFor="let questionario of questionarios" (click)="navegarParaQuestionario(questionario.questoes)" full>{{questionario.nome}}</button>
+                </div>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

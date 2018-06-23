@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button
+                menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Responder</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-content>
+            <ion-list>
+                <div *ngIf="questoes">
+                    <ion-card *ngFor="let questao of questoes;let i = index">
+
+                        <ion-card-content>
+                            <ion-card-title class="enunciado">
+                                {{i+1}}) {{questao.enunciado}}
+                            </ion-card-title>
+                            <ion-list radio-group
+                                      [(ngModel)]="respostas[i]">
+                                <ion-item>
+                                    <ion-label>A) {{questao.opcaoA}}</ion-label>
+                                    <ion-radio value="1"></ion-radio>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>B) {{questao.opcaoB}}</ion-label>
+                                    <ion-radio value="2"></ion-radio>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>C) {{questao.opcaoC}}</ion-label>
+
+                                    <ion-radio value="3"></ion-radio>
+                                </ion-item>
+                                <ion-item>
+                                    <ion-label>D) {{questao.opcaoD}}</ion-label>
+                                    <ion-radio value="4"></ion-radio>
+                                </ion-item>
+
+                            </ion-list>
+                            
+
+                        </ion-card-content>
+
+                    </ion-card>
+                    <button ion-button class="secondary" (click)="responder()">Responder</button>
+                </div>
+
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

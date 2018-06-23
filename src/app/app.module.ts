@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EntrarTurmaModalPage } from '../pages/turma/entrar/modal/entrar-modal';
 import { TurmaPage } from '../pages/turma/turma';
+import { QuestionarioPage } from '../pages/questionario/questionario';
+import { ResponderPage } from '../pages/questionario/responder/responder';
 
 
 @NgModule({
@@ -28,6 +30,9 @@ import { TurmaPage } from '../pages/turma/turma';
     EntrarTurmaModalPage,
     CriarTurmaPage,
     TurmaPage,
+    QuestionarioPage,
+    ResponderPage
+
   ],
   imports: [
     BrowserModule,    
@@ -43,7 +48,10 @@ import { TurmaPage } from '../pages/turma/turma';
     CriarTurmaPage,
     EntrarTurmaPage,
     EntrarTurmaModalPage,
-    TurmaPage    
+    TurmaPage,
+    QuestionarioPage,
+    ResponderPage
+
   ],
   providers: [
     UserService,
