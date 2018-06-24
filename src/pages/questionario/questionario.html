@@ -12,9 +12,10 @@
     <ion-card>
         <ion-card-content>
             <ion-list>
-                    
-                <div *ngIf="questionarios">
-                    <button ion-button *ngFor="let questionario of questionarios" (click)="navegarParaQuestionario(questionario.questoes)" full>{{questionario.nome}}</button>
+                <button *ngIf="tipo=='professor'" ion-button color="secondary" (click)="navegarParaAdicionarQuestionarios()"
+                full>Adicionar Questionário</button>    
+                <div *ngIf="turma.questionarios">
+                    <button ion-button *ngFor="let questionario of turma.questionarios" (click)="navegarParaQuestionario(questionario.questoes)" full>{{questionario.nome}}</button>
                 </div>
             </ion-list>
         </ion-card-content>

@@ -19,6 +19,7 @@ import { EntrarTurmaModalPage } from '../pages/turma/entrar/modal/entrar-modal';
 import { TurmaPage } from '../pages/turma/turma';
 import { QuestionarioPage } from '../pages/questionario/questionario';
 import { ResponderPage } from '../pages/questionario/responder/responder';
+import { CriarQuestionarioPage } from '../pages/questionario/criar/criar-questionario';
 
 
 @NgModule({
@@ -31,8 +32,8 @@ import { ResponderPage } from '../pages/questionario/responder/responder';
     CriarTurmaPage,
     TurmaPage,
     QuestionarioPage,
-    ResponderPage
-
+    ResponderPage,
+    CriarQuestionarioPage
   ],
   imports: [
     BrowserModule,    
@@ -50,7 +51,8 @@ import { ResponderPage } from '../pages/questionario/responder/responder';
     EntrarTurmaModalPage,
     TurmaPage,
     QuestionarioPage,
-    ResponderPage
+    ResponderPage,
+    CriarQuestionarioPage
 
   ],
   providers: [

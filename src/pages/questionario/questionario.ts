@@ -5,9 +5,9 @@ import { Repository } from './../../repository/repository';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ModalController } from 'ionic-angular/components/modal/modal-controller';
-import { Questionario } from '../../models/questionario';
 import { ResponderPage } from './responder/responder';
 import { Questao } from '../../models/questao';
+import { CriarQuestionarioPage } from './criar/criar-questionario';
 
 @Component({
   selector: 'questionario',
@@ -15,18 +15,23 @@ import { Questao } from '../../models/questao';
 })
 
 export class QuestionarioPage {
-  public questionarios: Questionario[];
+  
+  public turma: Turma;
   public tipo:string;
   constructor(public navCtrl: NavController, public modalCtrl: ModalController,
              public navParams: NavParams, private repositorio: Repository,
              public userService: UserService) {
-    this.questionarios = navParams.get('data');
+    this.turma = navParams.get('data');
     this.tipo = UserService.getCurrentUser().tipo;
   }
 
   navegarParaQuestionario(questoes: Questao[]){
     
     this.navCtrl.push(ResponderPage, {data: questoes});
+  }
+  navegarParaAdicionarQuestionarios(){
+    this.navCtrl.push(CriarQuestionarioPage, {data: this.turma});
+
   }
   
   

@@ -10,10 +10,19 @@ class QuestaoSerializer(serializers.ModelSerializer):
         fields = ('id', 'enunciado', 'opcaoA', 'opcaoB', 'opcaoC', 'opcaoD', 'gabarito')
 
 class QuestionarioSerializer(serializers.ModelSerializer):
-    questoes = QuestaoSerializer(many=True, read_only=True)
+    questoes = QuestaoSerializer(many=True)
     class Meta:
         model = Questionario
         fields = '__all__'
+    def create(self, validated_data):
+        questoes = validated_data.pop('questoes')
+        instance = Questionario.objects.create(**validated_data)
+        for questao in questoes:
+            instanciaQuestao = Questao.objects.create(questionario=instance, **questao)
+            instance.questoes.add(instanciaQuestao)
+        
+        instance.save()
+        return instance 
 
 class LoginSerializer(serializers.Serializer):
     email = serializers.CharField(max_length=200)

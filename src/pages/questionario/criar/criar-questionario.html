@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button
+                menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Criar Questionários</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-content>
+            <ion-list>
+                <form [formGroup]="form">
+                    <ion-row>
+                        <ion-col>
+                            <ion-item>
+                                <ion-input placeholder="Nome"
+                                           type="text"
+                                           formControlName="nome"></ion-input>
+                            </ion-item>
+                            
+
+                            <div formArrayName="questoes"
+                                 *ngFor="let questao of form.get('questoes').controls; let i = index;">
+                                <div [formGroupName]="i">
+                                    <ion-input formControlName="enunciado"
+                                               placeholder="Enunciado"></ion-input>
+                                    <ion-input formControlName="opcaoA"
+                                               placeholder="Opção A"></ion-input>
+                                    <ion-input formControlName="opcaoB"
+                                               placeholder="Opção B"></ion-input>
+                                    <ion-input formControlName="opcaoC"
+                                               placeholder="Opção C"></ion-input>
+                                    <ion-input formControlName="opcaoD"
+                                               placeholder="Opção D"></ion-input>
+                                    <ion-input formControlName="gabarito"
+                                               placeholder="Gabarito"></ion-input>
+
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-col class="signup-col">
+                        <button ion-button
+                                class="submit-btn"
+                                full
+                                (click)="adicionarQuestao()">Adicionar Questão</button>
+                    </ion-col>
+
+                    <ion-row>
+                        <ion-col class="signup-col">
+                            <button ion-button
+                                    class="submit-btn"
+                                    full
+                                    (click)="criarQuestionario()">Criar</button>
+                        </ion-col>
+                    </ion-row>
+
+                </form>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

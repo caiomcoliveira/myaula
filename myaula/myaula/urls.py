@@ -25,6 +25,8 @@ urlpatterns = [
     path('api/cadastrar/', views.UsuarioCadastro.as_view()),
     path('api/usuario/<slug:matricula>/', views.UsuarioByMatricula.as_view()),
     path('api/turmas/', views.TurmaList.as_view()),
+    path('api/questionario/', views.QuestionarioList.as_view()),
+
     path('api/turmas/nome=<slug:nome>/', views.TurmaListFilter.as_view()),
 ]
 

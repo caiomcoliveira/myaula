@@ -23,7 +23,7 @@ export class TurmaPage {
 
   navegarParaQuestionarios() {
     console.log(this.turma.questionarios);
-    this.navCtrl.push(QuestionarioPage, {data: this.turma.questionarios});
+    this.navCtrl.push(QuestionarioPage, {data: this.turma});
   }
   navegarParaForum() {
 

@@ -6,6 +6,7 @@ export namespace Api {
     export const entrarTurma: string = rootPath+ "adicionar/";
     export const cadastrar: string = rootPath+ "cadastrar/";
     export const usuarioPorMatricula = (matricula: string) => `http://localhost:8100/api/usuario/${matricula}/`;
+    export const questionario: string = rootPath+ "questionario/";
     
 
  
