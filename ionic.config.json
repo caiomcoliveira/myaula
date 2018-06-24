@@ -1,6 +1,6 @@
 {
   "name": "MyAula",
-  "app_id": "",
+  "app_id": "0d6492c9",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
