@@ -19,6 +19,7 @@ import { Aluno } from '../../models/aluno';
 })
 export class HomePage {
   public title: string = "Login";
+  public log: string = "TUdo ok";
   public form: FormGroup;
   public online: boolean = false;
   public turmas: Turma[] = [];
@@ -41,6 +42,7 @@ export class HomePage {
 
       },
       (error) => {
+        this.log = error.message;
         console.log(error.message);
       }
     )

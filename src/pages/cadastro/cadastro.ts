@@ -12,6 +12,7 @@ import { Api } from '../../api/routes';
   templateUrl: 'cadastro.html'
 })
 export class CadastroPage {
+  
   public form: FormGroup;
   constructor(public navCtrl: NavController, public repositorio: Repository, public userService: UserService) {
     this.form = new FormBuilder().group({
